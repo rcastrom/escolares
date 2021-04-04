@@ -1,0 +1,75 @@
+@extends('layouts.sescolares')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Módulo Servicios Escolares</div>
+                <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="post" action="{{route('escolares.especialidad_alta')}}" role="form">
+                        @csrf
+                        <fieldset class="border p-2">
+                            <legend class="w-auto">Todos los datos son obligatorios</legend>
+                            <div class="form-group row">
+                                <label for="espe" class="col-sm-6 col-form-label">Codificación de la especialidad</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="espe" name="espe" required class="form-control" maxlength="5" onchange="this.value=this.value.toUpperCase();">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="nespecialidad" class="col-sm-6 col-form-label">Nombre de la especialidad</label>
+                                <div class="col-sm-6">
+                                    <input type="text" id="nespecialidad" name="nespecialidad" required class="form-control" onchange="this.value=this.value.toUpperCase();">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="carrera" class="col-sm-6 col-form-label">Asociar a la carrera</label>
+                                <div class="col-sm-6">
+                                    <select name="carrera" id="carrera" required class="form-control">
+                                        <option value="" selected>--Seleccione--</option>
+                                        @foreach($carreras as $carr)
+                                            <option value="{{$carr->carrera."_".$carr->reticula}}">(Ret {{$carr->reticula}}) {{$carr->nombre_reducido}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="cred_especialidad" class="col-sm-6 col-form-label">Créditos especialidad</label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="cred_especialidad" name="cred_especialidad" required class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="cred_optativos" class="col-sm-6 col-form-label">Créditos optativos</label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="cred_optativos" name="cred_optativos" required class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body">
+                                        La codificación para la especialidad es única, por lo que de existir otra igual no se
+                                        podrá realizar el registro. El código máximo es de 5 caracteres
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Continuar</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

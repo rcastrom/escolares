@@ -1,24 +1,25 @@
 # SII vr 2.0
 
 *Versión del Sistema Integral de Información (SII) de los Institutos Tecnológicos totalmente
-desarrollada en Laravel*.
+desarrollado en Laravel*.
 
 
 ## Comenzando 🚀
 
-_Es necesario migrar la base de datos de Sybase hacia otro manejador; en particular, se recomienda PostgreSQL; sin
-embargo, el proyecto está totalmente desarrollado como PDO lo que permitiría emplear otra base._
+_Es necesario migrar primero la base de datos de Sybase hacia otro manejador; en particular, 
+se recomienda PostgreSQL. Sin embargo, el proyecto al estar totalmente desarrollado como PDO 
+le permitiría emplear otra base._
 
 Dentro del proyecto **POSTGRE** se encuentra una base en PostgreSQL (sin valores pero sí con la estructura) así
 como las definiciones de funciones que, hasta el momento, cuenta el sistema.
 
 Hasta el momento, los módulos que se han migrado son:
-* Servicios Escolares.
-* Estudiantes.
-* División de Estudios Profesionales.
-* Jefaturas Académicas.
-* Planeación.
-* Coordinación de Verano.
+* Servicios Escolares (70%).
+* Estudiantes (70%).
+* División de Estudios Profesionales (80%).
+* Jefaturas Académicas (60%).
+* Planeación (40%).
+* Coordinación de Verano (90%).
 
 ### Pre-requisitos 📋
 
@@ -33,43 +34,28 @@ En caso de emplear Ningx (RECOMENDADO), se le recomienda seguir las indicaciones
 ```
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-20-04-es
 ```
+Para posteriormente, habilitar la extensión de pgsql en fpm.
+
+_Adicionalmente, debe contar con composer instalado_
+`https://getcomposer.org/download/`
 ### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+Desde consola, dirigirse primeramente a /var/www/html y crear la carpeta que será la del proyecto 
+(para el ejemplo, se llamará escolares); así entonces
+```
+sudo mkdir -p escolares
+```
+Primero, liberará la carpeta para que pueda ser escribible como el usuario de 
+```
+git clone https://github.com/rcastrom/escolares.git 
+```
+_Una vez dado Enter, se habrá creado una carpeta llamada "escolares" misma que primero debe ingresar a la misma
+para actualizar e instalar los componentes necesarios; para ello, teclear_
 
 ```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
+composer update
 ```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
 
 ## Despliegue 📦
 
@@ -77,39 +63,20 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+_Herramientas empleadas:_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Laravel](https://laravel.com/) - El framework web usado
+* [PostgreSQL](https://www.postgresql.org/) - Manejador de base de datos
+* [Bootstrap](https://getbootstrap.com/) - Usado para el CSS
 
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
 * **Ricardo Castro Méndez** - *Trabajo Inicial* - [rcastrom](https://github.com/rcastrom)
+* **Julia Chávez Remigio** - *Colaboradora y revisora* - [jchavez](mailto:jchavez@ite.edu.mx)
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
+Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ---

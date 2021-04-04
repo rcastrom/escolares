@@ -1,22 +1,38 @@
 # SII vr 2.0
 
-_Versión del Sistema Integral de Información (SII) pero con una nueva versión en base de datos así como de estructura_
+*Versión del Sistema Integral de Información (SII) de los Institutos Tecnológicos totalmente
+desarrollada en Laravel*.
+
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_Es necesario migrar la base de datos de Sybase hacia otro manejador; en particular, se recomienda PostgreSQL; sin
+embargo, el proyecto está totalmente desarrollado como PDO lo que permitiría emplear otra base._
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+Dentro del proyecto **POSTGRE** se encuentra una base en PostgreSQL (sin valores pero sí con la estructura) así
+como las definiciones de funciones que, hasta el momento, cuenta el sistema.
 
+Hasta el momento, los módulos que se han migrado son:
+* Servicios Escolares.
+* Estudiantes.
+* División de Estudios Profesionales.
+* Jefaturas Académicas.
+* Planeación.
+* Coordinación de Verano.
 
 ### Pre-requisitos 📋
 
-_Versión mínima de PHP: 7.3 y se recomienda a PostgreSQL como manejador de base de datos RECOMENDADO; sin embargo, está construido en PDO por lo que es posible modificar al mismo. De ser Postgre, PHP deberá contar con la extensión pgsql_
+_Versión mínima de PHP: 7.3 y se recomienda a PostgreSQL como manejador de base de datos, en
+cuyo caso, deberá contar con la extensión php7.3_pgsql_
 
 ```
-Da un ejemplo
+* sudo apt install php7.0-pgsql
+* sudo service apache2 restart
 ```
-
+En caso de emplear Ningx (RECOMENDADO), se le recomienda seguir las indicaciones en
+```
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-20-04-es
+```
 ### Instalación 🔧
 
 _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_

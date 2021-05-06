@@ -48,22 +48,22 @@ Primero, liberará la carpeta para que pueda ser escribible como el usuario de
 ```
 git clone https://github.com/rcastrom/escolares.git 
 ```
-_Una vez dado Enter, se habrá creado una carpeta llamada "escolares" misma que primero debe ingresar a la misma
-para actualizar e instalar los componentes necesarios; para ello, teclear_
+Una vez dado Enter, se habrá creado una carpeta llamada "escolares" misma que primero debe ingresar a la misma
+para actualizar e instalar los componentes necesarios; para ello, teclear
 
 ```
 composer update
 ```
 
-_Hecho eso, debe copiarse el archivo ".env.example" como ".env"_
+Hecho eso, debe copiarse el archivo ".env.example" como ".env"
 ```
 sudo cp .env.example .env
 sudo chown www-data:www-data .env
 ```
 
-_En el archivo recién creado (.env) debe indicar los datos necesarios para
+En el archivo recién creado (_.env_) debe indicar los datos necesarios para
 su proyecto (tales como URL, usuario y contraseña para la base de datos del proyecto);
-por ejemplo_
+por ejemplo
 ```
 APP_ENV=production
 APP_DEBUG=false
@@ -87,6 +87,7 @@ Esta versión, ha sido creada (_por el momento_) para los siguientes tipos de us
 * division
 * acad
 * planeacion
+
 Por lo que, debe crear los usuarios en base al tipo de rol que van a emplear; para ello, en 
   el archivo database->seeders encontrará el archivo UserTableSeeder.php, mismo que debe
   usar para dar de alta a todos los usuarios (incluyendo estudiantes). En dicho archivo, 

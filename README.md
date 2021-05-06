@@ -40,7 +40,7 @@ Para posteriormente, habilitar la extensión de pgsql en fpm.
 _Adicionalmente, debe contar con composer instalado_
 `https://getcomposer.org/download/`
 ### Instalación 🔧
-Desde consola, dirigirse primeramente a /var/www/html y crear la carpeta que será la del proyecto 
+Desde consola, dirigirse primeramente a /var/www/html/ y crear la carpeta que será la del proyecto 
 (para el ejemplo, se llamará escolares); así entonces
 ```
 sudo mkdir -p escolares
@@ -97,18 +97,20 @@ Esta versión, ha sido creada (_por el momento_) para los siguientes tipos de us
 * acad
 * planeacion
 
-Por lo que, deben crearse los usuarios en base al tipo de rol que van a emplear; para ello, en 
-  el archivo database->seeders encontrará el archivo UserTableSeeder.php, mismo que debe
-  usar para dar de alta a todos los usuarios (incluyendo estudiantes). 
-En dicho archivo, encontrará un ejemplo del cómo se debe crear al usuario en base a un 
-determinado perfil (es decir, todos los usuarios los crea en el archivo y posteriormente, 
-por seguridad, borre la información de los usuarios creados). 
+Por lo que, deben crearse los usuarios de acuerdo al tipo de rol que van a emplear; para ello, 
+desde la ruta 
+<ruta_proyecto>/database/seeders/ 
+encontrará el archivo UserTableSeeder.php, mismo que debe usar para dar de alta a todos 
+los usuarios (incluyendo estudiantes). 
+En dicho archivo, encontrará un ejemplo del cómo se debe crear al usuario tomando como ejemplo
+un determinado perfil. Posteriormente y por seguridad, se le recomienda 
+borrar la información de los usuarios creados. 
 Posteriormente, solamente debe activar (migrar) la información hacia la base de datos; para
   ello, desde consola (y estando en la raíz del proyecto; por ejemplo, 
-  /var/www/html/escolares), teclee
-...
+  /var/www/html/escolares/), teclee
+```
   php artisan db:seed --class=UserTableSeeder
-...
+```
   De encontrarse algún error, el sistema le indicará el dato; caso contrario, el sistema
   estará listo para ser empleado.
 ## Construido con 🛠️

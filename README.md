@@ -81,9 +81,9 @@ DB_PASSWORD=<su contraseña>
 El mismo sistema de Laravel emite recomendaciones referentes a la configuración que
 se recomienda emplear si decide emplear éste sistema; por favor, verifique dicha información
 en el siguiente enlace
-...
+```
 https://laravel.com/docs/8.x/deployment
-...
+```
 
 ## Despliegue 📦
 

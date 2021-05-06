@@ -118,6 +118,7 @@ _Herramientas empleadas:_
 * [Laravel](https://laravel.com/) - El framework web usado
 * [PostgreSQL](https://www.postgresql.org/) - Manejador de base de datos
 * [Bootstrap](https://getbootstrap.com/) - Usado para el CSS
+* [Laravel Angular Admin](https://github.com/silverbux/laravel-angular-admin) - Template administrativo
 
 
 

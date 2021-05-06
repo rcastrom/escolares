@@ -6,12 +6,13 @@ desarrollado en Laravel*.
 
 ## Comenzando 🚀
 
-_Es necesario migrar primero la base de datos de Sybase hacia otro manejador; en particular, 
+_Es necesario migrar primero la base de datos hacia otro manejador; en particular, 
 se recomienda PostgreSQL. Sin embargo, el proyecto al estar totalmente desarrollado como PDO 
-le permitiría emplear otra base._
+le permitiría emplear otro tipo._
 
-Dentro del proyecto **POSTGRE** se encuentra una base en PostgreSQL (sin valores pero sí con la estructura) así
-como las definiciones de funciones que, hasta el momento, cuenta el sistema.
+Dentro del proyecto **POSTGRE** se encuentra una base en PostgreSQL (sin valores pero sí 
+con la estructura) así como las definiciones de funciones que, hasta el momento, cuenta el 
+sistema.
 
 Hasta el momento, los módulos que se han migrado son:
 * Servicios Escolares (90%).
@@ -44,12 +45,13 @@ Desde consola, dirigirse primeramente a /var/www/html y crear la carpeta que ser
 ```
 sudo mkdir -p escolares
 ```
-Primero, liberará la carpeta para que pueda ser escribible como el usuario de 
+Posteriormente, ingresar a dicha carpeta y descargar el proyecto 
 ```
 git clone https://github.com/rcastrom/escolares.git 
 ```
-Una vez dado Enter, se habrá creado una carpeta llamada "escolares" misma que primero debe ingresar a la misma
-para actualizar e instalar los componentes necesarios; para ello, teclear
+Una vez dado Enter, se habrán descargado los archivos que conforman tanto a Laravel 8.0, así como
+al proyecto de SII. Lo primero a realizar, es actualizar e instalar los componentes necesarios; 
+para ello, teclear
 
 ```
 composer update
@@ -75,6 +77,13 @@ DB_DATABASE=<su base de datos>
 DB_USERNAME=<su usuario>
 DB_PASSWORD=<su contraseña>
 ```
+## En caso de emplear Nginx (recomendado)
+El mismo sistema de Laravel emite recomendaciones referentes a la configuración que
+se recomienda emplear si decide emplear éste sistema; por favor, verifique dicha información
+en el siguiente enlace
+...
+https://laravel.com/docs/8.x/deployment
+...
 
 ## Despliegue 📦
 

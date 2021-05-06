@@ -14,8 +14,8 @@ Dentro del proyecto **POSTGRE** se encuentra una base en PostgreSQL (sin valores
 como las definiciones de funciones que, hasta el momento, cuenta el sistema.
 
 Hasta el momento, los módulos que se han migrado son:
-* Servicios Escolares (70%).
-* Estudiantes (70%).
+* Servicios Escolares (90%).
+* Estudiantes (90%).
 * División de Estudios Profesionales (80%).
 * Jefaturas Académicas (60%).
 * Planeación (40%).
@@ -27,7 +27,7 @@ _Versión mínima de PHP: 7.3 y se recomienda a PostgreSQL como manejador de bas
 cuyo caso, deberá contar con la extensión php7.3_pgsql_
 
 ```
-* sudo apt install php7.0-pgsql
+* sudo apt install php7.3-pgsql
 * sudo service apache2 restart
 ```
 En caso de emplear Ningx (RECOMENDADO), se le recomienda seguir las indicaciones en
@@ -55,12 +55,52 @@ para actualizar e instalar los componentes necesarios; para ello, teclear_
 composer update
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Hecho eso, debe copiarse el archivo ".env.example" como ".env"_
+```
+sudo cp .env.example .env
+sudo chown www-data:www-data .env
+```
+
+_En el archivo recién creado (.env) debe indicar los datos necesarios para
+su proyecto (tales como URL, usuario y contraseña para la base de datos del proyecto);
+por ejemplo_
+```
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=<indicar la URL que empleará para SII>
+DB_CONNECTION=pgsql #Si emplea PostgreSQL como manejador de la BD
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=<su base de datos>
+DB_USERNAME=<su usuario>
+DB_PASSWORD=<su contraseña>
+```
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
-
+Esta versión, ha sido creada (_por el momento_) para los siguientes tipos de usuarios 
+(también conocidos como "roles"):
+* escolares
+* alumno
+* docente
+* verano
+* division
+* acad
+* planeacion
+Por lo que, debe crear los usuarios en base al tipo de rol que van a emplear; para ello, en 
+  el archivo database->seeders encontrará el archivo UserTableSeeder.php, mismo que debe
+  usar para dar de alta a todos los usuarios (incluyendo estudiantes). En dicho archivo, 
+  encontrará un ejemplo del cómo se debe crear al usuario en base a un determinado perfil 
+  (es decir, todos los usuarios los crea en el archivo y posteriormente, por seguridad, 
+  borre la información del archivo).
+  Posteriormente, solamente debe activar (migrar) la información hacia la base de datos; para
+  ello, desde consola (y estando en la raíz del proyecto; por ejemplo, 
+  /var/www/html/escolares), teclee
+...
+  php artisan db:seed --class=UserTableSeeder
+...
+  De encontrarse algún error, el sistema le indicará el dato; caso contrario, el sistema
+  estará listo para ser empleado.
 ## Construido con 🛠️
 
 _Herramientas empleadas:_
@@ -68,6 +108,7 @@ _Herramientas empleadas:_
 * [Laravel](https://laravel.com/) - El framework web usado
 * [PostgreSQL](https://www.postgresql.org/) - Manejador de base de datos
 * [Bootstrap](https://getbootstrap.com/) - Usado para el CSS
+
 
 
 ## Autores ✒️

@@ -84,7 +84,7 @@ class CertificadoPDFController extends Controller
         $carrera=DB::table("carreras")->where('carrera',$alumno->carrera)
             ->where('reticula',$alumno->reticula)->first();
         $ultimo_periodo=DB::table('historia_alumno')->where('no_de_control',$control)
-            ->whereIn('tipo_evaluacion',array('01','02','1','2','R1','R2','E1','OO','RC','RU','RO','CE','RP','EA'))
+            ->whereIn('tipo_evaluacion',array('01','02','1','2','R1','R2','E1','OO','RC','RU','RO','CE','RP','EA','PG'))
             ->max('periodo');
         if((substr($ultimo_periodo,-1)==1)||(substr($ultimo_periodo,-1)==2)){
             $mes_final="JUNIO";
@@ -214,13 +214,13 @@ class CertificadoPDFController extends Controller
                 $this->fpdf->Cell($ancho_nombre_materia,3,strtoupper(utf8_decode($value->nombre_completo_materia))." *",0,0,'L');
             }else{
                 $this->fpdf->Cell($ancho_nombre_materia,3,strtoupper(utf8_decode($value->nombre_completo_materia)),0,0,'L');
-                if((($value->tipo_evaluacion)!="RU")&&(($value->tipo_evaluacion)!= "AC")){
+                if(($value->tipo_evaluacion!="RU")&&($value->tipo_evaluacion!= "AC")&&($value->tipo_evaluacion!= "PG")){
                     $num_materias += 1;
                     $suma_calif += $value->calificacion;
                 }
             }
             //Calificacion
-            if(($value->tipo_evaluacion) == "RU"){
+            if($value->tipo_evaluacion == "RU"||$value->tipo_evaluacion == "PG"){
                 $this->fpdf->Cell(3,3,'AC',0,0,'R');
             }elseif(($value->tipo_evaluacion) == "AC"){
                 $alumno->reticula==15?(substr($control,0,2)<19?$this->fpdf->Cell(3,3,'ACA',0,0,'R'):$this->fpdf->Cell(3,3,'',0,0,'R')):$this->fpdf->Cell(3,3,'ACA',0,0,'R');

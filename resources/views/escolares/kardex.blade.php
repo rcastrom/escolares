@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-header">Kardex de alumno</div>
                 <div class="card-body">
-                    <?php $suma_total=0; $calificaciones_totales=0; $j=1; $tipos_mat=array("O2","R1","R2","RO","RP","2"); $tipos_aprob=array('AC','RC','RU'); ?>
+                    <?php $suma_total=0; $calificaciones_totales=0; $j=1; $tipos_mat=array("O2","R1","R2","RO","RP","2"); $tipos_aprob=array('AC','RC','RU','PG'); ?>
                     @foreach($calificaciones as $key=>$value)
                             @if(!empty($value))
                         <caption>{{$nperiodos[$key][0]->identificacion_larga}}</caption>

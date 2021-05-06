@@ -17,8 +17,8 @@
             font-size: 8pt;
         }
         @page { margin: 100px 50px; }
-        .header { position: fixed; left: 0px; top: -100px; right: 0px; height: 100px; text-align: center; padding-bottom: 10px; }
-        .footer { position: fixed; left: 0px; bottom: -50px; right: 0px; height: 50px;text-align: center;}
+        .header { position: fixed; left: 0; top: -100px; right: 0; height: 100px; text-align: center; padding-bottom: 10px; }
+        .footer { position: fixed; left: 0; bottom: -50px; right: 0; height: 50px;text-align: center;}
         .footer .pagenum:before { content: counter(page); }
 
         .tabla{
@@ -70,7 +70,7 @@
         Pag <span class="pagenum"></span>
     </div>
 
-    <?php $suma_total=0; $calificaciones_totales=0; $j=1; $tipos_mat=array("O2","R1","R2","RO","RP"); $tipos_aprob=array('AC','RC','RU'); ?>
+    <?php $suma_total=0; $calificaciones_totales=0; $j=1; $tipos_mat=array("O2","R1","R2","RO","RP"); $tipos_aprob=array('AC','RC','RU','PG'); ?>
     @foreach($calificaciones as $key=>$value)
         @if(!empty($value))
             <table class="tabla table-striped">

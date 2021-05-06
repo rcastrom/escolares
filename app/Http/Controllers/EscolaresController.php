@@ -180,7 +180,8 @@ class EscolaresController extends Controller
             ->get();
         $carreras = DB::table('carreras')->orderBy('nombre_reducido')->get();
         $planes = DB::table('planes_de_estudio')->get();
-        return view('escolares.nuevo')->with(compact('estados', 'periodo', 'mensaje', 'periodos', 'carreras', 'planes'));
+        $tipos_ingreso = DB::table('tipos_ingreso')->get();
+        return view('escolares.nuevo')->with(compact('estados', 'periodo', 'mensaje', 'periodos', 'carreras', 'planes','tipos_ingreso'));
     }
 
     public function altanuevo(Request $request)
@@ -864,6 +865,15 @@ class EscolaresController extends Controller
         } elseif ($accion == 15) {
             $periodos = DB::table('periodos_escolares')->orderBy('periodo', 'desc')->get();
             return view('escolares.datos_certificado')->with(compact('alumno', 'control', 'periodo', 'periodos'));
+        } elseif ($accion == 16){
+            $planes = DB::table('planes_de_estudio')->get();
+            $alumno_plan=$alumno->plan_de_estudios;
+            $periodos = DB::table('periodos_escolares')->orderBy('periodo', 'desc')->get();
+            $periodo_ingreso=$alumno->periodo_ingreso_it;
+            $tipos_ingreso=DB::table('tipos_ingreso')->get();
+            $tipo_ingreso=$alumno->tipo_ingreso;
+            $generales = AlumnosGenerales::findOrfail($control);
+            return view('escolares.modificar_alumno')->with(compact('control','alumno','planes','periodos','periodo_ingreso','alumno_plan','tipo_ingreso','tipos_ingreso','generales'));
         }
     }
 
@@ -1954,5 +1964,71 @@ class EscolaresController extends Controller
             $alumno = Alumnos::findOrfail($control);
             return view('escolares.prelibidiomas')->with(compact('control','alumno'));
         }
+    }
+    public function modificar_datos(Request $request){
+        $data = request()->validate([
+            'control' => 'required',
+            'apmat' => 'required',
+            'nombre' => 'required',
+            'plan'=>'required',
+            'ingreso'=>'required',
+            'semestre' => 'required',
+            'curp' => 'required',
+            'tipo' => 'required'
+        ], [
+            'control.required' => 'Debe indicar el numero de control',
+            'apmat.required' => 'Debe escribir el apellido materno',
+            'nombre.required' => 'Debe escribir el nombre',
+            'plan.required'=> 'Especifique el plan de estudios',
+            'ingreso.required'=>'Especifique el período de ingreso',
+            'semestre.required' => 'Debe indicar el semestre que se encuentra actualmente',
+            'curp.required' => 'Debe escribir el CURP',
+            'tipo.required' => 'Debe especificar el tipo de ingreso del estudiante'
+        ]);
+        $control=$request->get('control');
+        $appat = $request->get('appat');
+        $apmat = $request->get('apmat');
+        $nombre = $request->get('nombre');
+        $plan = $request->get('plan');
+        $ingreso = $request->get('ingreso');
+        $semestre = $request->get('semestre');
+        $nss = $request->get('nss');
+        $curp = $request->get('curp');
+        $calle = $request->get('calle');
+        $colonia = $request->get('colonia');
+        $cp = $request->get('cp');
+        $telcel = $request->get('telcel');
+        $correo = $request->get('correo');
+        $rev = $request->get('periodos_revalidacion');
+        $tipo = $request->get('tipo');
+        $quien = Auth::user()->email;
+        DB::table('alumnos')->where('no_de_control',$control)
+            ->update([
+            'apellido_paterno' => $appat,
+            'apellido_materno' => $apmat,
+            'nombre_alumno' => $nombre,
+            'semestre' => $semestre,
+            'plan_de_estudios' => $plan,
+            'curp_alumno' => $curp,
+            'tipo_ingreso' => $tipo,
+            'periodo_ingreso_it' => $ingreso,
+            'correo_electronico' => $correo,
+            'periodos_revalidacion' => $rev,
+            'usuario' => $quien,
+            'fecha_actualizacion' => null,
+            'nss' => $nss,
+            'created_at' => null,
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('alumnos_generales')->where('no_de_control',$control)
+            ->update([
+            'domicilio_calle' => $calle,
+            'domicilio_colonia' => $colonia,
+            'codigo_postal' => $cp,
+            'telefono' => $telcel,
+            'created_at' => null,
+            'updated_at' => Carbon::now()
+        ]);
+        return view('escolares.si');
     }
 }

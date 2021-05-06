@@ -97,13 +97,13 @@ Esta versión, ha sido creada (_por el momento_) para los siguientes tipos de us
 * acad
 * planeacion
 
-Por lo que, debe crear los usuarios en base al tipo de rol que van a emplear; para ello, en 
+Por lo que, deben crearse los usuarios en base al tipo de rol que van a emplear; para ello, en 
   el archivo database->seeders encontrará el archivo UserTableSeeder.php, mismo que debe
-  usar para dar de alta a todos los usuarios (incluyendo estudiantes). En dicho archivo, 
-  encontrará un ejemplo del cómo se debe crear al usuario en base a un determinado perfil 
-  (es decir, todos los usuarios los crea en el archivo y posteriormente, por seguridad, 
-  borre la información del archivo).
-  Posteriormente, solamente debe activar (migrar) la información hacia la base de datos; para
+  usar para dar de alta a todos los usuarios (incluyendo estudiantes). 
+En dicho archivo, encontrará un ejemplo del cómo se debe crear al usuario en base a un 
+determinado perfil (es decir, todos los usuarios los crea en el archivo y posteriormente, 
+por seguridad, borre la información de los usuarios creados). 
+Posteriormente, solamente debe activar (migrar) la información hacia la base de datos; para
   ello, desde consola (y estando en la raíz del proyecto; por ejemplo, 
   /var/www/html/escolares), teclee
 ...
@@ -130,5 +130,7 @@ _Herramientas empleadas:_
 ## Licencia 📄
 
 Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
+El objetivo del proyecto, es que poco a poco los institutos tecnológicos que deseen participar en
+ir mejorando éste sistema, puedan participar con observaciones y mejoras, para así contar
+con un sistema creado por y para los Tecnológicos.
 ---

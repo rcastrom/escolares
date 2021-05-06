@@ -36,6 +36,8 @@ Route::group(['prefix'=>'escolares','middleware'=>['auth','role:escolares']],fun
     Route::get('/alumnos/alta', [EscolaresController::class, 'nuevo']);
     Route::post('/alumnos/nuevo',[EscolaresController::class, 'altanuevo'])
         ->name('escolares.nuevo_alumno');
+    Route::post('/alumnos/actualizar', [EscolaresController::class,'modificar_datos'])
+        ->name('escolares.actualizar_alumno');
     Route::get('/periodos/alta',[EscolaresController::class, 'periodos']);
     Route::post('/periodos/nuevo',[EscolaresController::class, 'periodoalta'])
         ->name('escolares.periodo_nuevo');

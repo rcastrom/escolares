@@ -189,11 +189,9 @@
                             <div class="col-sm-8">
                                 <select name="tipo" id="tipo" required class="form-control">
                                     <option value="" selected>--Seleccione--</option>
-                                    <option value="1">Examen selección</option>
-                                    <option value="2">Equivalencia</option>
-                                    <option value="3">Traslado</option>
-                                    <option value="4">Convalidación</option>
-                                    <option value="5">Movilidad</option>
+                                    @foreach($tipos_ingreso as $tingreso)
+                                        <option value="{{$tingreso->id}}">{{$tingreso->descripcion}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

@@ -45,6 +45,7 @@
                                         <option value="13">Acreditar complementaria</option>
                                         <option value="14">Liberación idioma extranjero</option>
                                         <option value="15">Certificado</option>
+                                        <option value="16">Modificar datos estudiante</option>
                                     </select>
                                 </div>
                             </div>

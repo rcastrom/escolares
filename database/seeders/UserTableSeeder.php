@@ -26,11 +26,11 @@ class UserTableSeeder extends Seeder
         $role_direccion = Role::where('name', 'direccion')->first();
 
         $user = new User();
-        $user->name = 'Cómputo Planeación';
-        $user->email = 'computo_p@ite.edu.mx';
-        $user->password =bcrypt('Gatha6e9');
+        $user->name = 'Cómputo Escolares';
+        $user->email = 'computo_e@ite.edu.mx';
+        $user->password =bcrypt('admin');
         $user->save();
-        $user->roles()->attach($role_planeacion);
+        $user->roles()->attach($role_escolares);
 
 
 

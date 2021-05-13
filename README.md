@@ -10,7 +10,7 @@ _Es necesario migrar primero la base de datos hacia otro manejador; en particula
 se recomienda PostgreSQL. Sin embargo, el proyecto al estar totalmente desarrollado como PDO 
 le permitiría emplear otro tipo._
 
-Dentro del proyecto [BDTEC](https://https://github.com/rcastrom/bdtec) se encuentra una base
+Dentro del proyecto [BDTEC](https://github.com/rcastrom/bdtec) se encuentra una base
 de datos con la estructura en PostgreSQL (sin valores) así como las definiciones de 
 tablas y procedimientos que, hasta el momento, cuenta el sistema.
 

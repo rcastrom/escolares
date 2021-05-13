@@ -24,13 +24,14 @@ class UserTableSeeder extends Seeder
         $role_verano = Role::where('name', 'verano')->first();
         $role_planeacion = Role::where('name', 'planeacion')->first();
         $role_direccion = Role::where('name', 'direccion')->first();
+        $role_desacad = Role::where('name','desacad')->first();
 
         $user = new User();
-        $user->name = 'Cómputo Escolares';
-        $user->email = 'computo_e@ite.edu.mx';
+        $user->name = 'Cómputo Desarrollo';
+        $user->email = 'computo_des@ite.edu.mx';
         $user->password =bcrypt('admin');
         $user->save();
-        $user->roles()->attach($role_escolares);
+        $user->roles()->attach($role_desacad);
 
 
 

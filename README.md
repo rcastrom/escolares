@@ -10,9 +10,9 @@ _Es necesario migrar primero la base de datos hacia otro manejador; en particula
 se recomienda PostgreSQL. Sin embargo, el proyecto al estar totalmente desarrollado como PDO 
 le permitiría emplear otro tipo._
 
-Dentro del proyecto **POSTGRE** se encuentra una base en PostgreSQL (sin valores pero sí 
-con la estructura) así como las definiciones de funciones que, hasta el momento, cuenta el 
-sistema.
+Dentro del proyecto [BDTEC](https://https://github.com/rcastrom/bdtec) se encuentra una base
+de datos con la estructura en PostgreSQL (sin valores) así como las definiciones de 
+tablas y procedimientos que, hasta el momento, cuenta el sistema.
 
 Hasta el momento, los módulos que se han migrado son:
 * Servicios Escolares (90%).
@@ -21,6 +21,7 @@ Hasta el momento, los módulos que se han migrado son:
 * Jefaturas Académicas (60%).
 * Planeación (40%).
 * Coordinación de Verano (90%).
+* Desarrollo Académico (1%).
 
 ### Pre-requisitos 📋
 

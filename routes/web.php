@@ -11,7 +11,7 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\AcademicosController;
 use App\Http\Controllers\VeranoController;
 use App\Http\Controllers\PlaneacionController;
-
+use App\Http\Controllers\DesarrolloController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -400,3 +400,11 @@ Route::group(['prefix'=>'planeacion','middleware'=>['auth','role:planeacion']],f
         ->name('planeacion.contra');
 });
 //AQUI TERMINA PLANEACION
+
+//AQUI COMIENZA DESARROLLO ACADEMICO
+Route::group(['prefix'=>'desacad','middleware'=>['auth','role:desacad']],function (){
+    Route::get('/', [DesarrolloController::class, 'index'])
+        ->name('inicio_desarrollo');
+    Route::get('/desacad/fichas/inicio',[DesarrolloController::class, 'fichas_inicio']);
+});
+//AQUI TERMINA DESARROLLO ACADEMICO

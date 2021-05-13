@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Role;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
 class RoleTableSeeder extends Seeder
@@ -49,7 +50,7 @@ class RoleTableSeeder extends Seeder
         $role->description='Coord Verano';
         $role->save();*/
 
-        $role=new Role();
+        /*$role=new Role();
         $role->name='planeacion';
         $role->description='Planeacion';
         $role->save();
@@ -57,6 +58,11 @@ class RoleTableSeeder extends Seeder
         $role=new Role();
         $role->name='direccion';
         $role->description='Direccion';
+        $role->save();*/
+
+        $role=new Role();
+        $role->name='desacad';
+        $role->description='Desarrollo Académico';
         $role->save();
 
     }

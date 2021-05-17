@@ -405,6 +405,8 @@ Route::group(['prefix'=>'planeacion','middleware'=>['auth','role:planeacion']],f
 Route::group(['prefix'=>'desacad','middleware'=>['auth','role:desacad']],function (){
     Route::get('/', [DesarrolloController::class, 'index'])
         ->name('inicio_desarrollo');
-    Route::get('/desacad/fichas/inicio',[DesarrolloController::class, 'fichas_inicio']);
+    Route::get('/fichas/inicio',[DesarrolloController::class, 'fichas_inicio']);
+    Route::post('/fichas/parametros1',[DesarrolloController::class, 'fichas_inicio_parametros'])
+        ->name('desacad.parametros_fichas');
 });
 //AQUI TERMINA DESARROLLO ACADEMICO

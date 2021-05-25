@@ -98,17 +98,17 @@ su proyecto (tales como URL, usuario y contraseña para la base de datos del pro
 por ejemplo
 
 ````
->
-> APP_ENV=production
-> APP_DEBUG=false
-> APP_URL=<indicar la URL que empleará para SII>
-> DB_CONNECTION=pgsql #Si emplea PostgreSQL como manejador de la BD
-> DB_HOST=127.0.0.1
-> DB_PORT=5432
-> DB_DATABASE=<su base de datos>
-> DB_USERNAME=<su usuario>
-> DB_PASSWORD=<su contraseña>
-> 
+
+ APP_ENV=production
+ APP_DEBUG=false
+ APP_URL=<indicar la URL que empleará para SII>
+ DB_CONNECTION=pgsql #Si emplea PostgreSQL como manejador de la BD
+ DB_HOST=127.0.0.1
+ DB_PORT=5432
+ DB_DATABASE=<su base de datos>
+ DB_USERNAME=<su usuario>
+ DB_PASSWORD=<su contraseña>
+ 
 ````
 
 ### En caso de emplear Nginx (recomendado)

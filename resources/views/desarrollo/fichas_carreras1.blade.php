@@ -26,12 +26,11 @@
                                 <tr>
                                     <td>{{$carr->nombre_reducido}}</td>
                                     <td>{{$carr->reticula}}</td>
-                                    <td><input type="checkbox" class="form-check-input" name="carreras[]" value="{{trim($carr->carrera)."_".trim($carr->reticula)}}"></td>
+                                    <td><input type="checkbox" class="form-check-input" name="carreras[]" value="{{trim($carr->carrera)."_".trim($carr->reticula)}}" @if($carr->ofertar=='1') {{'checked'}} @endif></td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        <input type="hidden" name="periodo" value="{{$periodo_ficha->fichas}}">
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Continuar</button>
                         </div>

@@ -44,8 +44,7 @@ _Adicionalmente, debe contar con composer instalado_
 ### Instalación 🔧
 
 Desde terminal, dirigirse a un punto donde descargará el proyecto; por ejemplo, suponga 
-_/home/<su_usuario>/Escritorio/_ y ahí creará una carpeta llamada _sii_; entonces desde 
-terminal
+_/home/<su_usuario>/Escritorio/_ y ahí creará una carpeta llamada _sii_; entonces 
 
 ````
 cd /home/<su_usuario>/Escritorio
@@ -69,8 +68,7 @@ sudo mv /home/<su_usuario>/Escritorio/sii/escolares .
 sudo chown -R www-data:www-data escolares
 ````
 
-Existen tres carpetas que se requiere puedan ser actualizadas por _composer_, que deben
-poder ser escribibles
+Existen tres carpetas que _composer_ requiere ser escribibles
 
 ````
 cd escolares
@@ -79,7 +77,8 @@ sudo chmod -R 777 bootstrap
 sudo chmod -R 777 storage
 
 ````
-Se debe actualizar e instalar los componentes necesarios para su ejecución 
+
+Se deben actualizar e instalar los paquetes necesarios para su ejecución 
 (declarados en composer.json); para ello, emplee la instrucción
 
 ```
@@ -104,7 +103,7 @@ por ejemplo
  APP_URL=<indicar la URL que empleará para SII>
  DB_CONNECTION=pgsql #Si emplea PostgreSQL como manejador de la BD
  DB_HOST=127.0.0.1
- DB_PORT=5432
+ DB_PORT=5432        #Si emplea PostgreSQL como manejador de la BD
  DB_DATABASE=<su base de datos>
  DB_USERNAME=<su usuario>
  DB_PASSWORD=<su contraseña>
@@ -119,7 +118,7 @@ decide emplear este sistema; por favor, verifique dicha información en el sigui
 
 ## Despliegue 📦
 
-Esta versión, ha sido creada (_por el momento_) para los siguientes tipos de usuarios 
+Esta versión ha sido creada (_por el momento_) para los siguientes tipos de usuarios 
 (también conocidos como "roles"):
 * escolares
 * alumno

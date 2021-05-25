@@ -408,5 +408,8 @@ Route::group(['prefix'=>'desacad','middleware'=>['auth','role:desacad']],functio
     Route::get('/fichas/inicio',[DesarrolloController::class, 'fichas_inicio']);
     Route::post('/fichas/parametros1',[DesarrolloController::class, 'fichas_inicio_parametros'])
         ->name('desacad.parametros_fichas');
+    Route::get('/fichas/carreras',[DesarrolloController::class, 'fichas_carreras']);
+    Route::post('/fichas/carreras1',[DesarrolloController::class, 'fichas_carreras_actualizar'])
+        ->name('desacad.carreras_ofertar');
 });
 //AQUI TERMINA DESARROLLO ACADEMICO

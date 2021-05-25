@@ -64,11 +64,14 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="fas fa-child"></i><p>Aspirantes<i class="right fas fa-angle-left"></i></p>
+                            <i class="fas fa-tools"></i><p>&nbsp;Entrega de fichas<i class="right fas fa-angle-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{url('/desacad/fichas/inicio')}}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Configuración</p></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('/desacad/fichas/carreras')}}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Carreras x ofertar</p></a>
                             </li>
                         </ul>
                     </li>

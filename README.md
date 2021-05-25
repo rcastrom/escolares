@@ -5,9 +5,9 @@ desarrollado en Laravel*.
 
 ## Comenzando 🚀
 
-_Es necesario migrar primero la base de datos hacia otro manejador; en particular, 
-se recomienda PostgreSQL. Sin embargo, el proyecto al estar totalmente desarrollado como PDO 
-le permitiría emplear otro tipo._
+_Es necesario migrar primero la base de datos; en particular, se recomienda PostgreSQL. 
+Sin embargo, el proyecto al estar totalmente desarrollado como PDO 
+le permitiría emplear otro tipo de manejador._
 
 Dentro del proyecto [BDTEC](https://github.com/rcastrom/bdtec) se encuentra una base
 de datos con la estructura en PostgreSQL (sin valores) así como las definiciones de 
@@ -31,25 +31,27 @@ cuyo caso, deberá contar con la extensión php7.3_pgsql_
 * sudo apt install php7.3-pgsql
 * sudo service apache2 restart
 ```
-
-En caso de emplear Ningx (RECOMENDADO), se le recomienda seguir las indicaciones en
-
-```
-https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-20-04-es
-```
-Para posteriormente, habilitar la extensión de pgsql en fpm.
+>
+> En caso de emplear Ningx (*RECOMENDADO*), favor de seguir las indicaciones del 
+> siguiente: [Nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-20-04-es)
+>
+>Posteriormente, deberá habilitar la extensión de pgsql en fpm.
+>
 
 _Adicionalmente, debe contar con composer instalado_
 `https://getcomposer.org/download/`
 
 ### Instalación 🔧
 
-Desde consola, dirigirse primeramente a /var/www/html/ y crear la carpeta que será 
-la del proyecto  (para el ejemplo, se llamará escolares); así entonces
+Desde terminal, dirigirse a un punto donde descargará el proyecto; por ejemplo, suponga 
+_/home/<su_usuario>/Escritorio/_ y ahí creará una carpeta llamada _sii_; entonces desde 
+terminal
 
-```
-sudo mkdir -p escolares
-```
+````
+cd /home/<su_usuario>/Escritorio
+mkdir sii
+
+````
 
 Posteriormente, ingresar a dicha carpeta y descargar el proyecto 
 
@@ -57,8 +59,27 @@ Posteriormente, ingresar a dicha carpeta y descargar el proyecto
 git clone https://github.com/rcastrom/escolares.git 
 ```
 
-Una vez descargados los archivos que conforman tanto a Laravel 8.x, así como al proyecto de 
-SII. debe actualizar e instalar los componentes necesarios para su ejecución 
+Una vez descargados los archivos que conforman tanto a Laravel así como al proyecto de 
+SII, mueva la carpeta _escolares_ hacia la ruta donde se carga la información web 
+(típicamente _/var/www/html/_); aún en terminal
+
+````
+cd /var/www/html/
+sudo mv /home/<su_usuario>/Escritorio/sii/escolares .
+sudo chown -R www-data:www-data escolares
+````
+
+Existen tres carpetas que se requiere puedan ser actualizadas por _composer_, que deben
+poder ser escribibles
+
+````
+cd escolares
+sudo chmod -R 777 vendor
+sudo chmod -R 777 bootstrap
+sudo chmod -R 777 storage
+
+````
+Se debe actualizar e instalar los componentes necesarios para su ejecución 
 (declarados en composer.json); para ello, emplee la instrucción
 
 ```
@@ -76,27 +97,23 @@ En el archivo recién creado (_.env_) debe indicar los datos necesarios para
 su proyecto (tales como URL, usuario y contraseña para la base de datos del proyecto);
 por ejemplo
 
-```
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=<indicar la URL que empleará para SII>
-DB_CONNECTION=pgsql #Si emplea PostgreSQL como manejador de la BD
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=<su base de datos>
-DB_USERNAME=<su usuario>
-DB_PASSWORD=<su contraseña>
-```
+>
+> APP_ENV=production
+> APP_DEBUG=false
+> APP_URL=<indicar la URL que empleará para SII>
+> DB_CONNECTION=pgsql #Si emplea PostgreSQL como manejador de la BD
+> DB_HOST=127.0.0.1
+> DB_PORT=5432
+> DB_DATABASE=<su base de datos>
+> DB_USERNAME=<su usuario>
+> DB_PASSWORD=<su contraseña>
+> 
 
-## En caso de emplear Nginx (recomendado)
+### En caso de emplear Nginx (recomendado)
 
-El mismo sistema de Laravel emite recomendaciones referentes a la configuración que
-se recomienda emplear si decide emplear éste sistema; por favor, verifique dicha información
-en el siguiente enlace
-
-```
-https://laravel.com/docs/8.x/deployment
-```
+Laravel emite recomendaciones referentes a la configuración que se recomienda emplear si 
+decide emplear este sistema; por favor, verifique dicha información en el siguiente 
+[enlace](https://laravel.com/docs/8.x/deployment)
 
 ## Despliegue 📦
 
@@ -109,6 +126,7 @@ Esta versión, ha sido creada (_por el momento_) para los siguientes tipos de us
 * division
 * acad
 * planeacion
+* desacad
 
 Por lo que, deben crearse los usuarios de acuerdo al tipo de rol que van a emplear; para ello, 
 desde _<ruta_proyecto>/database/seeders/_ encontrará el archivo *UserTableSeeder.php*, 

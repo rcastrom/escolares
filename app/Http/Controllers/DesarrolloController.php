@@ -77,5 +77,21 @@ class DesarrolloController extends Controller
         }
         return view('desarrollo.si');
     }
+    public function fichas_carreras(){
+        $periodo_ficha=DB::table('parametros_fichas')->where('activo','1')->first();
+        $nperiodo=DB::table('periodos_escolares')->where('periodo',$periodo_ficha->fichas)->first();
+        $carreras=DB::table('carreras')->orderBy('nombre_carrera','ASC')
+            ->where('nivel_escolar','L')
+            ->orderBy('reticula','ASC')->get();
+        return view('desarrollo.fichas_carreras1')->with(compact('periodo_ficha','carreras','nperiodo'));
+    }
+    public function fichas_carreras_actualizar(Request $request){
+        $periodo_ficha=$request->get('periodo');
+        foreach ($request->get('carreras') as $value){
+            $data=explode("_",$value);
+            $carrera=$data[0]; $reticula=$data[1];
+
+        }
+    }
     /*Termina para fichas */
 }

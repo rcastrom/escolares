@@ -97,6 +97,7 @@ En el archivo recién creado (_.env_) debe indicar los datos necesarios para
 su proyecto (tales como URL, usuario y contraseña para la base de datos del proyecto);
 por ejemplo
 
+````
 >
 > APP_ENV=production
 > APP_DEBUG=false
@@ -108,6 +109,7 @@ por ejemplo
 > DB_USERNAME=<su usuario>
 > DB_PASSWORD=<su contraseña>
 > 
+````
 
 ### En caso de emplear Nginx (recomendado)
 

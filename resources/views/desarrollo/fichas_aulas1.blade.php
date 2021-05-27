@@ -59,6 +59,9 @@
                                     <th>Aula</th>
                                     <th>Cupo</th>
                                     <th>Disponibles</th>
+                                    <th>Editar</th>
+                                    <th>Quitar aula</th>
+                                    <th>Impresión por aula</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -68,6 +71,9 @@
                                         <td>{{$data->aula}}</td>
                                         <td>{{$data->capacidad}}</td>
                                         <td>{{$data->disponibles}}</td>
+                                        <td><a href="/desacad/fichas/aula/editar?aula={{$data->aula}}&accion=1"><i class="far fa-edit"></i></a></td>
+                                        <td><a href="/desacad/fichas/aula/editar?aula={{$data->aula}}&accion=2"><i class="fa fa-trash"></i></a></td>
+                                        <td><a href="/desacad/fichas/aula/editar?aula={{$data->aula}}&accion=3"><i class="fa fa-print"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

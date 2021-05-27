@@ -44,5 +44,31 @@
             </div>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Aulas para aplicación de examen</div>
+                <div class="card-body">
+                    <p>La siguiente sección <u>solo deber ser seleccionada una vez</u>, y es cuando
+                        se encuentre registrando los datos iniciales para la entrega de fichas.
+                    </p>
+                    <form action="{{route('desacad.parametros_aulas')}}" method="post" role="form">
+                        @csrf
+                        <div class="form-group">
+                            <label for="salones">Con respecto a los salones para la aplicación del examen</label>
+                            <select name="salones" id="salones" required class="form-control">
+                                <option value="1" selected>Dejar los mismos salones y reiniciar los cupos</option>
+                                <option value="2">Quitar los salones, se ingresaran nuevas aulas</option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="periodo" value="{{$periodo_ficha->fichas}}">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Continuar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

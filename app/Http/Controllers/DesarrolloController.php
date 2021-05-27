@@ -77,6 +77,15 @@ class DesarrolloController extends Controller
         }
         return view('desarrollo.si');
     }
+    public function fichas_inicio_aulas(Request $request){
+        $opcion=$request->get('salones');
+        if($opcion==1){
+            DB::raw("UPDATE aulas_aspirantes SET disponibles=capacidad");
+        }else{
+            DB::table('aulas_aspirantes')->delete();
+        }
+        return view('desarrollo.si');
+    }
     public function fichas_carreras(){
         $periodo_ficha=DB::table('parametros_fichas')->where('activo','1')->first();
         $nperiodo=DB::table('periodos_escolares')->where('periodo',$periodo_ficha->fichas)->first();
@@ -137,6 +146,41 @@ class DesarrolloController extends Controller
             'carrera'=>$request->carrera
         ]);
         return redirect()->route('fichas_carreras');
+    }
+    public function fichas_aulas_editar(Request $request){
+        $aula=$request->get('aula');
+        $accion=$request->get('accion');
+        $periodo_ficha=DB::table('parametros_fichas')->where('activo','1')->first();
+        $nperiodo=DB::table('periodos_escolares')->where('periodo',$periodo_ficha->fichas)->first();
+        if($accion==1){
+            $salones=DB::table('aulas')->where('estatus','A')
+                ->select('aula','capacidad')->get();
+            $carreras=DB::table('carreras')->where('ofertar','1')
+                ->orderBy('nombre_reducido','ASC')
+                ->get();
+            $datos=DB::table('aulas_aspirantes')->where('aula',$aula)->first();
+            return view('desarrollo.fichas_aulas_editar')->with(compact('aula','datos','nperiodo','salones','carreras'));
+        }elseif ($accion==2){
+            DB::table('aulas_aspirantes')->where('aula',$aula)->delete();
+            return view('desarrollo.si');
+        }
+    }
+    public function fichas_aulas_actualizar2(Request $request){
+        $request->validate([
+            'cupo'=>'required|numeric|min:1'
+        ],[
+            'cupo.required'=>'Por favor, asigne un cupo al aula señalada',
+            'cupo.numeric'=>'El cupo debe ser un valor numérico',
+            'cupo.min'=>'El cupo no puede ser negativo ni cero'
+        ]);
+        $ncapacidad=($request->cupo-$request->cap_actual)+$request->disponibles;
+        DB::table('aulas_aspirantes')->where('aula',$request->aula)
+            ->update([
+            'capacidad'=>$request->cupo,
+            'disponibles'=>$ncapacidad,
+            'carrera'=>$request->carrera
+        ]);
+        return view('desarrollo.si');
     }
     /*Termina para fichas */
 }

@@ -144,6 +144,9 @@
                             <li class="nav-item">
                                 <a href="{{url('/escolares/idiomas/impresion')}}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Imprimir</p></a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{url('/escolares/idiomas/consulta')}}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Consulta</p></a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">

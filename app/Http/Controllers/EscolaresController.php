@@ -148,6 +148,11 @@ class EscolaresController extends Controller
         DB::select("select * from pap_curso_especial('$periodo')");
         return 1;
     }
+    public function consulta_idiomas($periodo,$idioma)
+    {
+        $data = DB::select("select * from pac_idiomas_consulta('$periodo',$idioma)");
+        return $data;
+    }
     public function nuevo()
     {
         $estados = DB::table('entidades_federativas')->get();
@@ -1963,6 +1968,29 @@ class EscolaresController extends Controller
         }else{
             $alumno = Alumnos::findOrfail($control);
             return view('escolares.prelibidiomas')->with(compact('control','alumno'));
+        }
+    }
+    public function idiomas_consulta(){
+        $per = $this->periodo();
+        $periodo = $per[0]->periodo;
+        $periodos = DB::table('periodos_escolares')
+            ->orderBy('periodo', 'desc')
+            ->get();
+        $idiomas=DB::table('idiomas')->get();
+        return view('escolares.idiomas_consulta1')->with(compact('periodo','periodos','idiomas'));
+    }
+    public function idiomas_consulta2(Request $request){
+        $periodo=$request->get('periodo');
+        $idioma=$request->get('idioma');
+        if(DB::table('idiomas_grupos')->where('periodo',$periodo)
+            ->where('idioma',$idioma)->count()>0){
+            $nperiodo=DB::table('periodos_escolares')->where('periodo',$periodo)->first();
+            $nidioma=DB::table('idiomas')->where('id',$idioma)->first();
+            $info=$this->consulta_idiomas($periodo,$idioma);
+            return view('escolares.idiomas_consulta2')->with(compact('nperiodo','nidioma','info'));
+        }else{
+            $mensaje="No hay grupos registrados para el periodo solicitado";
+            return view('escolares.no')->with(compact('mensaje'));
         }
     }
     public function modificar_datos(Request $request){

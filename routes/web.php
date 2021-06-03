@@ -138,6 +138,9 @@ Route::group(['prefix'=>'escolares','middleware'=>['auth','role:escolares']],fun
     Route::get('/idiomas/impresion',[EscolaresController::class, 'idiomas_impre']);
     Route::post('/idiomas/imprimir2',[EscolaresController::class, 'idiomas_impre2'])
         ->name('escolares.imprimir_idioma');
+    Route::get('/idiomas/consulta',[EscolaresController::class, 'idiomas_consulta']);
+    Route::post('/idiomas/consultar',[EscolaresController::class, 'idiomas_consulta2'])
+        ->name('escolares.cursos_idiomas');
 });
 //AQUI TERMINA SERVICIOS ESCOLARES
 
